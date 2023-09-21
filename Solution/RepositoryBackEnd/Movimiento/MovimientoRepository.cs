@@ -1,6 +1,7 @@
 ﻿using DataBackend;
 using DataBackend.Models;
 using Microsoft.EntityFrameworkCore;
+using SharedBackEnd;
 using System;
 using System.Runtime.CompilerServices;
 
@@ -22,25 +23,25 @@ namespace RepositoryBackEnd.Movimiento
             try
             {
                 var cuenta = await _context.TblCuenta.FindAsync(Movimiento.NIdCuenta);
-                if (cuenta == null || (cuenta.NSaldoActual < Movimiento.NValor && Movimiento.NTipoMovimiento == 6))
+                if (cuenta == null || (cuenta.NSaldoActual < Movimiento.NValor && Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO))
                 {
                     transaction.Rollback();
                     return "Saldo no disponible";
                 }
 
-                if (Movimiento.NTipoMovimiento == 6)
+                if (Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO)
                 {
-                    TblParametro parametro = await ObtenerLimiteDeTransaccionAsync(4, 8);
+                    TblParametro parametro = await ObtenerLimiteDeTransaccionAsync((int)Limite_Diario_Retiro.GRUPO, (int)Limite_Diario_Retiro.PARAMETRO);
 
                     var movimientosDelDia = await _context.TblMovimientos
                         .Where(m => m.NIdCuenta == Movimiento.NIdCuenta &&
                                     m.DFechaMovimiento.Value.Date == Movimiento.DFechaMovimiento.Value.Date &&
-                                    m.NTipoMovimiento == 6)
+                                    m.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO)
                         .ToListAsync();
 
-                    var sumaDebito = movimientosDelDia.Sum(m => m.NValor);
+                    decimal sumaDebito = (decimal)movimientosDelDia.Sum(m => m.NValor);
 
-                    if (sumaDebito+ Movimiento.NValor > parametro.NValor)
+                    if (Math.Abs(sumaDebito) + Movimiento.NValor > parametro.NValor)
                     {
                         transaction.Rollback();
                         return parametro.SValor;
@@ -53,13 +54,13 @@ namespace RepositoryBackEnd.Movimiento
                     DFechaMovimiento = Movimiento.DFechaMovimiento,
                     NTipoMovimiento = Movimiento.NTipoMovimiento,
                     NSaldoInicial = cuenta.NSaldoActual,
-                    NValor = Movimiento.NValor,
+                    NValor = Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO ? (Movimiento.NValor * -1) : Movimiento.NValor,
                     LVigente = Movimiento.LVigente
                 };
 
                 _context.TblMovimientos.Add(nuevoMovimiento);
 
-                cuenta.NSaldoActual = Movimiento.NTipoMovimiento == 6 ? cuenta.NSaldoActual - Movimiento.NValor : cuenta.NSaldoActual + Movimiento.NValor;
+                cuenta.NSaldoActual = Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO ? cuenta.NSaldoActual - Movimiento.NValor : cuenta.NSaldoActual + Movimiento.NValor;
 
                 await _context.SaveChangesAsync();
 
@@ -69,7 +70,7 @@ namespace RepositoryBackEnd.Movimiento
             catch (Exception)
             {
                 transaction.Rollback();
-                throw; 
+                throw;
             }
         }
 
