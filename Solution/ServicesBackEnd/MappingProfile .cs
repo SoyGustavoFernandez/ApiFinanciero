@@ -10,6 +10,9 @@ namespace ServicesBackEnd
         {
             CreateMap<PersonaViewModel, TblPersona>();
             CreateMap<TblPersona, PersonaViewModel>();
+
+            CreateMap<ClienteViewModel, TblCliente>();
+            CreateMap<TblCliente, ClienteViewModel>();
         }
     }
 }

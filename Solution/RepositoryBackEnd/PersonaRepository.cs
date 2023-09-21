@@ -1,7 +1,6 @@
 ﻿using DataBackend;
 using DataBackend.Models;
 using Microsoft.EntityFrameworkCore;
-using RepositoryBackEnd;
 
 namespace RepositoryBackEnd
 {
@@ -85,7 +84,6 @@ namespace RepositoryBackEnd
             if (personaExistente == null)
                 return false;
 
-            personaExistente.SNombres = persona.SNombres;
             personaExistente.SNombres = persona.SNombres;
             personaExistente.CIdentificacion = persona.CIdentificacion;
             personaExistente.CDireccion = persona.CDireccion;

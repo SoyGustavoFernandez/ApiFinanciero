@@ -11,6 +11,9 @@ namespace DependencyInjectionBackEnd
             services.AddScoped<IPersonaRepository, PersonaRepository>();
             services.AddScoped<IPersonaService, PersonaService>();
 
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClienteService, ClienteService>();
+
             return services;
         }
     }

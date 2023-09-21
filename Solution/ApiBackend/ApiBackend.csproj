@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataBackend\DataBackend.csproj" />
     <ProjectReference Include="..\DependencyInjectionBackEnd\DependencyInjectionBackEnd.csproj" />
+    <ProjectReference Include="..\LoggingBackEnd\LoggingBackEnd.csproj" />
     <ProjectReference Include="..\ServicesBackEnd\ServicesBackEnd.csproj" />
   </ItemGroup>
 

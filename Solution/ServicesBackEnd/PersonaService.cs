@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using DataBackend;
-using DataBackend.Models;
 using RepositoryBackEnd;
 
 namespace ServicesBackEnd

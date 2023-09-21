@@ -8,24 +8,24 @@ namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonaController : ControllerBase
+    public class ClienteController : ControllerBase
     {
-        private readonly IPersonaService _personaService;
-        private const string _nombreTabla = "persona";
+        private readonly IClienteService _clienteService;
+        private const string _nombreTabla = "cliente";
 
-        public PersonaController(IPersonaService personaService)
+        public ClienteController(IClienteService clienteService)
         {
-            _personaService = personaService;
+            _clienteService = clienteService;
         }
 
-        // GET: api/Persona
+        // GET: api/Cliente
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TblPersona>>> GetAllPersonas()
+        public async Task<ActionResult<IEnumerable<TblCliente>>> GetAllClientes()
         {
             try
             {
-                var personas = await _personaService.GetAllPersonasAsync();
-                return Ok(personas);
+                var clientes = await _clienteService.GetAllClientesAsync();
+                return Ok(clientes);
             }
             catch (Exception ex)
             {
@@ -35,20 +35,20 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // GET: api/Persona/5
+        // GET: api/Cliente/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TblPersona>> GetPersonaById(int id)
+        public async Task<ActionResult<TblCliente>> GetClienteById(int id)
         {
             try
             {
-                var persona = await _personaService.GetPersonaByIdAsync(id);
-                if (persona == null)
+                var cliente = await _clienteService.GetClienteByIdAsync(id);
+                if (cliente == null)
                 {
                     string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID {id}";
                     LoggerManager.LogWarning(message);
                     return NotFound(message);
                 }
-                return Ok(persona);
+                return Ok(cliente);
             }
             catch (Exception ex)
             {
@@ -58,13 +58,36 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // PUT: api/Persona/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePersona(int id, [FromBody] PersonaViewModel persona)
+        // GET: api/Cliente/ByIdPersonaPersona/5
+        [HttpGet("ByIdPersonaPersona/{idPersona}")]
+        public async Task<ActionResult<ClienteViewModel>> GetClienteByIdPersona(int idPersona)
         {
             try
             {
-                var updated = await _personaService.UpdatePersonaAsync(id, persona);
+                var cliente = await _clienteService.GetClienteByIdPersonaAsync(idPersona);
+                if (cliente == null)
+                {
+                    string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID de Persona {idPersona}";
+                    LoggerManager.LogWarning(message);
+                    return NotFound(message);
+                }
+                return Ok(cliente);
+            }
+            catch (Exception ex)
+            {
+                string message = $"Error interno del servidor: {ex.Message}";
+                LoggerManager.LogError(message);
+                return StatusCode(500, message);
+            }
+        }
+
+        // PUT: api/Cliente/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCliente(int id, [FromBody] ClienteViewModel cliente)
+        {
+            try
+            {
+                var updated = await _clienteService.UpdateClienteAsync(id, cliente);
                 if (!updated)
                 {
                     string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID {id}";
@@ -82,15 +105,15 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // POST: api/Persona
+        // POST: api/Cliente
         [HttpPost]
-        public async Task<IActionResult> CreatePersona([FromBody] PersonaViewModel persona)
+        public async Task<ActionResult<TblCliente>> CreateCliente([FromBody] ClienteViewModel cliente)
         {
             try
             {
-                var createdPersonaId = await _personaService.CreatePersonaAsync(persona);
-                LoggerManager.LogInfo($"Se insertó correctamente el registro con el ID {createdPersonaId} en la tabla {_nombreTabla}");
-                return CreatedAtAction(nameof(GetPersonaById), new { id = createdPersonaId }, null);
+                var createdClienteId = await _clienteService.CreateClienteAsync(cliente);
+                LoggerManager.LogInfo($"Se insertó correctamente el registro con el ID {createdClienteId} en la tabla {_nombreTabla}");
+                return CreatedAtAction(nameof(GetClienteById), new { id = createdClienteId }, null);
             }
             catch (Exception ex)
             {
@@ -100,13 +123,13 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // DELETE: api/Persona/5
+        // DELETE: api/Cliente/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePersona(int id)
+        public async Task<IActionResult> DeleteTblCliente(int id)
         {
             try
             {
-                var deleted = await _personaService.DeletePersonaAsync(id);
+                var deleted = await _clienteService.DeleteClienteAsync(id);
                 if (!deleted)
                 {
                     string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID {id}";

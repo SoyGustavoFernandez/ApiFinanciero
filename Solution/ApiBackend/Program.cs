@@ -2,7 +2,6 @@ using AutoMapper;
 using DataBackend.Models;
 using DependencyInjectionBackEnd;
 using Microsoft.OpenApi.Models;
-using RepositoryBackEnd;
 using ServicesBackEnd;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,15 +16,12 @@ var mappingConfig = new MapperConfiguration(mc =>
 });
 
 IMapper mapper = mappingConfig.CreateMapper();
+
 builder.Services.AddSingleton(mapper);
 
 DependencyInjectionConfiguration.ConfigureDependencyInjection(builder.Services);
 
-//builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
-//builder.Services.AddScoped<IPersonaService, PersonaService>();
-
 builder.Services.AddDbContext<RetoBackendContext>();
-
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -35,6 +31,7 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 app.UseSwagger();
+
 app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"); });
 
 // Configure the HTTP request pipeline.
