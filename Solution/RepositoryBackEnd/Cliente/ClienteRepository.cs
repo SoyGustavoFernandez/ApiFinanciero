@@ -3,7 +3,7 @@ using DataBackend.Models;
 using Microsoft.EntityFrameworkCore;
 using SharedBackEnd;
 
-namespace RepositoryBackEnd
+namespace RepositoryBackEnd.Cliente
 {
     public class ClienteRepository : IClienteRepository
     {
@@ -21,7 +21,7 @@ namespace RepositoryBackEnd
                 {
                     NIdCliente = p.NIdCliente,
                     NIdPersona = p.NIdPersona,
-                    SClave= p.SClave,
+                    SClave = p.SClave,
                     LVigente = p.LVigente
                 })
                 .ToListAsync();

@@ -3,7 +3,7 @@ using DataBackend.Models;
 using Microsoft.EntityFrameworkCore;
 using SharedBackEnd;
 
-namespace RepositoryBackEnd
+namespace RepositoryBackEnd.Cuenta
 {
     public class CuentaRepository : ICuentaRepository
     {
@@ -97,7 +97,7 @@ namespace RepositoryBackEnd
             if (Cuenta == null)
                 throw new ArgumentNullException(nameof(Cuenta));
 
-            var nuevoCuenta = new TblCuentum
+            var nuevoaCuenta = new TblCuentum
             {
                 NIdCliente = Cuenta.NIdCliente,
                 SNumCuenta = Cuenta.SNumCuenta,
@@ -106,11 +106,11 @@ namespace RepositoryBackEnd
                 NSaldoActual = Cuenta.NSaldoInicial,
                 LVigente = Cuenta.LVigente
             };
-        
-            _context.TblCuenta.Add(nuevoCuenta);
+
+            _context.TblCuenta.Add(nuevoaCuenta);
             await _context.SaveChangesAsync();
 
-            return nuevoCuenta.NIdCuenta;
+            return nuevoaCuenta.NIdCuenta;
         }
 
         public async Task<bool> UpdateCuentaAsync(int id, CuentaViewModel Cuenta)

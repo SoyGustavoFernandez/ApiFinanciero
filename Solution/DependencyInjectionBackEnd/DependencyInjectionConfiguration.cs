@@ -1,6 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RepositoryBackEnd;
-using ServicesBackEnd;
+using RepositoryBackEnd.Cliente;
+using RepositoryBackEnd.Cuenta;
+using RepositoryBackEnd.Movimiento;
+using RepositoryBackEnd.Persona;
+using ServicesBackEnd.Cliente;
+using ServicesBackEnd.Cuenta;
+using ServicesBackEnd.Movimiento;
+using ServicesBackEnd.Persona;
 
 namespace DependencyInjectionBackEnd
 {
@@ -16,6 +22,9 @@ namespace DependencyInjectionBackEnd
 
             services.AddScoped<ICuentaRepository, CuentaRepository>();
             services.AddScoped<ICuentaService, CuentaService>();
+
+            services.AddScoped<IMovimientoRepository, MovimientoRepository>();
+            services.AddScoped<IMovimientoService, MovimientoService>();
 
             return services;
         }

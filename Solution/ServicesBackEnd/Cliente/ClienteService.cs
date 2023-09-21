@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using DataBackend;
-using RepositoryBackEnd;
+using RepositoryBackEnd.Cliente;
 
-namespace ServicesBackEnd
+namespace ServicesBackEnd.Cliente
 {
     public class ClienteService : IClienteService
     {
@@ -45,7 +45,7 @@ namespace ServicesBackEnd
         public async Task<int> CreateClienteAsync(ClienteViewModel cliente)
         {
             var clienteEntity = _mapper.Map<ClienteViewModel>(cliente);
-         
+
             return await _clienteRepository.CreateClienteAsync(clienteEntity);
         }
 

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using DataBackend;
-using RepositoryBackEnd;
+using RepositoryBackEnd.Persona;
 
-namespace ServicesBackEnd
+namespace ServicesBackEnd.Persona
 {
     public class PersonaService : IPersonaService
     {

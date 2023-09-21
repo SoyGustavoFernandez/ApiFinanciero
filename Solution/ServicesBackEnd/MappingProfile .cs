@@ -16,6 +16,9 @@ namespace ServicesBackEnd
 
             CreateMap<CuentaViewModel, TblCuentum>();
             CreateMap<TblCuentum, CuentaViewModel>();
+
+            CreateMap<MovimientoViewModel, TblMovimiento>();
+            CreateMap<TblMovimiento, MovimientoViewModel>();
         }
     }
 }

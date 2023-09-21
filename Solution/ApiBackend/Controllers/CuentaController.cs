@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using DataBackend.Models;
 using RepositoryBackEnd;
 using LoggingBackEnd;
-using ServicesBackEnd;
 using DataBackend;
+using ServicesBackEnd.Cuenta;
 
 namespace ApiBackend.Controllers
 {
@@ -13,7 +13,6 @@ namespace ApiBackend.Controllers
     public class CuentaController : ControllerBase
     {
         private readonly ICuentaService _cuentaService;
-
         private const string _nombreTabla = "cuenta";
 
         public CuentaController(ICuentaService cuentaService)

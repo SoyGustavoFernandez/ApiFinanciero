@@ -1,6 +1,6 @@
 ﻿using DataBackend;
 
-namespace RepositoryBackEnd
+namespace RepositoryBackEnd.Persona
 {
     public interface IPersonaRepository
     {

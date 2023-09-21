@@ -39,6 +39,7 @@ namespace DataBackend
         /// <summary>
         /// Valor del movimiento.
         /// </summary>
+        [Required(ErrorMessage = "El valore del movimiento es obligatorio")]
         public decimal? NValor { get; set; }
 
         /// <summary>

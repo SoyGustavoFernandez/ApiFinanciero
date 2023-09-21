@@ -1,6 +1,6 @@
 ﻿using DataBackend;
 
-namespace ServicesBackEnd
+namespace ServicesBackEnd.Persona
 {
     public interface IPersonaService
     {

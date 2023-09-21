@@ -2,7 +2,7 @@
 using DataBackend.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace RepositoryBackEnd
+namespace RepositoryBackEnd.Persona
 {
     public class PersonaRepository : IPersonaRepository
     {
