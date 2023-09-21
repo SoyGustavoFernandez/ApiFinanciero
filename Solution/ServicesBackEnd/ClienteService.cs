@@ -33,11 +33,11 @@ namespace ServicesBackEnd
             return clienteViewModel;
         }
 
-        public async Task<ClienteViewModel> GetClienteByIdPersonaAsync(int idPersona)
+        public async Task<PersonaClienteViewModel> GetClienteByIdPersonaAsync(int idPersona)
         {
             var cliente = await _clienteRepository.GetClienteByIdPersonaAsync(idPersona);
 
-            var personaViewModel = _mapper.Map<ClienteViewModel>(cliente);
+            var personaViewModel = _mapper.Map<PersonaClienteViewModel>(cliente);
 
             return personaViewModel;
         }

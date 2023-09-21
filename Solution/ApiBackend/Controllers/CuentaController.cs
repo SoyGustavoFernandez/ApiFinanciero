@@ -1,31 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using DataBackend.Models;
+using RepositoryBackEnd;
+using LoggingBackEnd;
 using ServicesBackEnd;
 using DataBackend;
-using LoggingBackEnd;
 
 namespace ApiBackend.Controllers
 {
-    [Route("api/clientes")]
+    [Route("api/cuentas")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class CuentaController : ControllerBase
     {
-        private readonly IClienteService _clienteService;
-        private const string _nombreTabla = "cliente";
+        private readonly ICuentaService _cuentaService;
 
-        public ClienteController(IClienteService clienteService)
+        private const string _nombreTabla = "cuenta";
+
+        public CuentaController(ICuentaService cuentaService)
         {
-            _clienteService = clienteService;
+            _cuentaService = cuentaService;
         }
 
-        // GET: api/Cliente
+        // GET: api/Cuenta
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TblCliente>>> GetAllClientes()
+        public async Task<ActionResult<IEnumerable<TblCuentum>>> GetAllCuentas()
         {
             try
             {
-                var clientes = await _clienteService.GetAllClientesAsync();
-                return Ok(clientes);
+                var cuentas = await _cuentaService.GetAllCuentasAsync();
+                return Ok(cuentas);
             }
             catch (Exception ex)
             {
@@ -35,13 +38,13 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // GET: api/Cliente/5
+        // GET: api/Cuenta/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TblCliente>> GetClienteById(int id)
+        public async Task<ActionResult<TblCuentum>> GetCuentaById(int id)
         {
             try
             {
-                var cliente = await _clienteService.GetClienteByIdAsync(id);
+                var cliente = await _cuentaService.GetCuentaByIdAsync(id);
                 if (cliente == null)
                 {
                     string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID {id}";
@@ -58,16 +61,16 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // GET: api/Cliente/ClienteByIdPersona/5
-        [HttpGet("ClienteByIdPersona/{idPersona}")]
-        public async Task<ActionResult<PersonaClienteViewModel>> GetClienteByIdPersona(int idPersona)
+        // GET: api/Cliente/CuentaByIdCliente/5
+        [HttpGet("CuentaByIdCliente/{idCliente}")]
+        public async Task<ActionResult<ClienteViewModel>> GetCuentaByIdCliente(int idCliente)
         {
             try
             {
-                var cliente = await _clienteService.GetClienteByIdPersonaAsync(idPersona);
+                var cliente = await _cuentaService.GetCuentaByIdClienteAsync(idCliente);
                 if (cliente == null)
                 {
-                    string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID de Persona {idPersona}";
+                    string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID de Cliente {idCliente}";
                     LoggerManager.LogWarning(message);
                     return NotFound(message);
                 }
@@ -81,13 +84,14 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // PUT: api/Cliente/5
+
+        // PUT: api/Cuenta/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCliente(int id, [FromBody] ClienteViewModel cliente)
+        public async Task<IActionResult> UpdateCuenta(int id, [FromBody] CuentaViewModel cuenta)
         {
             try
             {
-                var updated = await _clienteService.UpdateClienteAsync(id, cliente);
+                var updated = await _cuentaService.UpdateCuentaAsync(id, cuenta);
                 if (!updated)
                 {
                     string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID {id}";
@@ -105,15 +109,18 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // POST: api/Cliente
+        // POST: api/Cuenta
         [HttpPost]
-        public async Task<ActionResult<TblCliente>> CreateCliente([FromBody] ClienteViewModel cliente)
+        public async Task<ActionResult<TblCuentum>> CreateCuenta([FromBody] CuentaViewModel cuenta)
         {
             try
             {
-                var createdClienteId = await _clienteService.CreateClienteAsync(cliente);
+                var createdClienteId = await _cuentaService.CreateCuentaAsync(cuenta);
                 LoggerManager.LogInfo($"Se insertó correctamente el registro con el ID {createdClienteId} en la tabla {_nombreTabla}");
-                return CreatedAtAction(nameof(GetClienteById), new { id = createdClienteId }, null);
+                return CreatedAtAction(nameof(GetCuentaById), new
+                {
+                    id = createdClienteId
+                }, null);
             }
             catch (Exception ex)
             {
@@ -123,13 +130,13 @@ namespace ApiBackend.Controllers
             }
         }
 
-        // DELETE: api/Cliente/5
+        // DELETE: api/Cuenta/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTblCliente(int id)
+        public async Task<IActionResult> DeleteTblCuentum(int id)
         {
             try
             {
-                var deleted = await _clienteService.DeleteClienteAsync(id);
+                var deleted = await _cuentaService.DeleteCuentaAsync(id);
                 if (!deleted)
                 {
                     string message = $"No se encontró ningún registro en la tabla {_nombreTabla} con el ID {id}";

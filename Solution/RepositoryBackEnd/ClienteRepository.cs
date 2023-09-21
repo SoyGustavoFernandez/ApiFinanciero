@@ -45,28 +45,52 @@ namespace RepositoryBackEnd
             return cliente;
         }
 
-        public async Task<ClienteViewModel> GetClienteByIdPersonaAsync(int idPersona)
+        public async Task<PersonaClienteViewModel> GetClienteByIdPersonaAsync(int idPersona)
         {
-            var cliente = await _context.TblClientes
+            var Persona = await _context.TblPersonas
+                 .Where(p => p.NIdPersona == idPersona)
+                 .Select(p => new PersonaViewModel
+                 {
+                     NIdPersona = p.NIdPersona,
+                     SNombres = p.SNombres,
+                     CIdentificacion = p.CIdentificacion,
+                     CDireccion = p.CDireccion,
+                     CTelefono = p.CTelefono,
+                     NEdad = p.NEdad,
+                     NGenero = p.NGenero,
+                     LVigente = p.LVigente
+                 })
+                 .FirstOrDefaultAsync();
+
+            if (Persona == null)
+            {
+                return null;
+            }
+
+            var Clientes = await _context.TblClientes
                 .Where(c => c.NIdPersona == idPersona)
-                .Include(c => c.NIdPersonaNavigation)
                 .Select(c => new ClienteViewModel
                 {
                     NIdCliente = c.NIdCliente,
-                    NIdPersona = c.NIdPersona,
                     SClave = c.SClave,
                     LVigente = c.LVigente,
-                    SNombres = c.NIdPersonaNavigation.SNombres,
-                    CIdentificacion = c.NIdPersonaNavigation.CIdentificacion,
-                    CDireccion = c.NIdPersonaNavigation.CDireccion,
-                    CTelefono = c.NIdPersonaNavigation.CTelefono,
-                    NEdad = c.NIdPersonaNavigation.NEdad,
-                    NGenero = c.NIdPersonaNavigation.NGenero
-
+                    CDireccion = Persona.CDireccion,
+                    SNombres = Persona.SNombres,
+                    CIdentificacion = Persona.CIdentificacion,
+                    CTelefono = Persona.CTelefono,
+                    NEdad = Persona.NEdad,
+                    NGenero = Persona.NGenero,
+                    NIdPersona = Persona.NIdPersona
                 })
-                .FirstOrDefaultAsync();
+                .ToListAsync();
 
-            return cliente;
+            var personaClienteViewModel = new PersonaClienteViewModel
+            {
+                persona = Persona,
+                clientes = Clientes
+            };
+
+            return personaClienteViewModel;
         }
 
         public async Task<int> CreateClienteAsync(ClienteViewModel Cliente)

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataBackend\DataBackend.csproj" />
+    <ProjectReference Include="..\SharedBackEnd\SharedBackEnd.csproj" />
   </ItemGroup>
 
 </Project>
