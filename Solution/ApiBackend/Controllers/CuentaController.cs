@@ -31,7 +31,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                string message = $"Error interno del servidor: {ex.Message}";
+                string message = $"Error interno del servidor: {ex.InnerException}";
                 LoggerManager.LogError(message);
                 return StatusCode(500, message);
             }
@@ -54,7 +54,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                string message = $"Error interno del servidor: {ex.Message}";
+                string message = $"Error interno del servidor: {ex.InnerException}";
                 LoggerManager.LogError(message);
                 return StatusCode(500, message);
             }
@@ -77,7 +77,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                string message = $"Error interno del servidor: {ex.Message}";
+                string message = $"Error interno del servidor: {ex.InnerException}";
                 LoggerManager.LogError(message);
                 return StatusCode(500, message);
             }
@@ -102,7 +102,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                string message = $"Error interno del servidor: {ex.Message}";
+                string message = $"Error interno del servidor: {ex.InnerException}";
                 LoggerManager.LogError(message);
                 return StatusCode(500, message);
             }
@@ -123,7 +123,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                string message = $"Error interno del servidor: {ex.Message}";
+                string message = $"Error interno del servidor: {ex.InnerException}";
                 LoggerManager.LogError(message);
                 return StatusCode(500, message);
             }
@@ -147,7 +147,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                string message = $"Error interno del servidor: {ex.Message}";
+                string message = $"Error interno del servidor: {ex.InnerException}";
                 LoggerManager.LogError(message);
                 return StatusCode(500, message);
             }

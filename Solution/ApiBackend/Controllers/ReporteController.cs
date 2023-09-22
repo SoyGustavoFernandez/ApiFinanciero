@@ -30,7 +30,7 @@ namespace ApiBackend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+                return StatusCode(500, $"Error interno del servidor: {ex.InnerException}");
             }
         }
     }

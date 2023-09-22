@@ -2,6 +2,7 @@
 using DataBackend;
 using RepositoryBackEnd.Cuenta;
 using RepositoryBackEnd.Movimiento;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServicesBackEnd.Movimiento
 {
@@ -18,6 +19,11 @@ namespace ServicesBackEnd.Movimiento
 
         public async Task<string> RealizarTransaccionAsync(MovimientoViewModel Movimiento)
         {
+            if (Movimiento.NIdCuenta == null)
+            {
+                throw new ValidationException("La cuenta es obligatoria");
+            }
+
             var movimientoEntity = _mapper.Map<MovimientoViewModel>(Movimiento);
 
             return await _movimientoRepository.RealizarTransaccionAsync(movimientoEntity);

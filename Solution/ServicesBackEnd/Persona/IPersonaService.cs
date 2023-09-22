@@ -9,5 +9,6 @@ namespace ServicesBackEnd.Persona
         Task<int> CreatePersonaAsync(PersonaViewModel persona);
         Task<bool> UpdatePersonaAsync(int id, PersonaViewModel persona);
         Task<bool> DeletePersonaAsync(int id);
+        PersonaViewModel CreatePersonaTest(PersonaViewModel objPersona);
     }
 }
