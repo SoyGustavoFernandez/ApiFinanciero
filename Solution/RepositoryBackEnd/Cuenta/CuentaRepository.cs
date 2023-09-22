@@ -97,7 +97,7 @@ namespace RepositoryBackEnd.Cuenta
             if (Cuenta == null)
                 throw new ArgumentNullException(nameof(Cuenta));
 
-            var nuevoaCuenta = new TblCuentum
+            var nuevaCuenta = new TblCuentum
             {
                 NIdCliente = Cuenta.NIdCliente,
                 SNumCuenta = Cuenta.SNumCuenta,
@@ -107,10 +107,10 @@ namespace RepositoryBackEnd.Cuenta
                 LVigente = Cuenta.LVigente
             };
 
-            _context.TblCuenta.Add(nuevoaCuenta);
+            _context.TblCuenta.Add(nuevaCuenta);
             await _context.SaveChangesAsync();
 
-            return nuevoaCuenta.NIdCuenta;
+            return nuevaCuenta.NIdCuenta;
         }
 
         public async Task<bool> UpdateCuentaAsync(int id, CuentaViewModel Cuenta)

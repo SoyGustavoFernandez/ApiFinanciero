@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Reporte\**" />
+    <EmbeddedResource Remove="Reporte\**" />
+    <None Remove="Reporte\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataBackend\DataBackend.csproj" />
     <ProjectReference Include="..\SharedBackEnd\SharedBackEnd.csproj" />
   </ItemGroup>

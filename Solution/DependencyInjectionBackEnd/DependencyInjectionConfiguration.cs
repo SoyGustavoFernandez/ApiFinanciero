@@ -7,6 +7,7 @@ using ServicesBackEnd.Cliente;
 using ServicesBackEnd.Cuenta;
 using ServicesBackEnd.Movimiento;
 using ServicesBackEnd.Persona;
+using ServicesBackEnd.Reporte;
 
 namespace DependencyInjectionBackEnd
 {
@@ -25,6 +26,8 @@ namespace DependencyInjectionBackEnd
 
             services.AddScoped<IMovimientoRepository, MovimientoRepository>();
             services.AddScoped<IMovimientoService, MovimientoService>();
+
+            services.AddScoped<IReporteService, ReporteService>();
 
             return services;
         }

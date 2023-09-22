@@ -124,6 +124,7 @@ namespace RepositoryBackEnd.Movimiento
                     NTipoMovimiento = c.NTipoMovimiento,
                     NSaldoInicial = c.NSaldoInicial,
                     NValor = c.NValor,
+                    NSaldoDisponible = c.NSaldoInicial + c.NValor,
                     LVigente = c.LVigente
                 })
                 .ToListAsync();

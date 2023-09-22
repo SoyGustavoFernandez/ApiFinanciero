@@ -43,6 +43,11 @@ namespace DataBackend
         public decimal? NValor { get; set; }
 
         /// <summary>
+        /// Saldo despues del movimiento.
+        /// </summary>
+        public decimal? NSaldoDisponible { get; set; }
+
+        /// <summary>
         /// Estado del registro.
         /// </summary>
         [Required]
