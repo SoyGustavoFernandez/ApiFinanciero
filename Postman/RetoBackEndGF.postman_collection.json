@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "2f6fd472-0fc7-4451-a282-f1a4b38cb8e2",
+		"name": "RetoBackEndGF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6988992"
+	},
+	"item": [
+		{
+			"name": "Personas",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/Persona",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"Persona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sNombres\": \"Gustavo Fernández\",\r\n  \"nGenero\": 1, //1: Masculino - 2: Femenino\r\n  \"nEdad\": 26,\r\n  \"cIdentificacion\": \"70886499\",\r\n  \"cDireccion\": \"Piura - Perú\",\r\n  \"cTelefono\": \"941917926\",\r\n  \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/Persona",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"Persona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sNombres\": \"Gustavo Fernández\",\r\n  \"nGenero\": 1, //1: Masculino - 2: Femenino\r\n  \"nEdad\": 26,\r\n  \"cIdentificacion\": \"70886499\",\r\n  \"cDireccion\": \"Piura - Perú\",\r\n  \"cTelefono\": \"941917926\",\r\n  \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/Persona/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"Persona",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/Persona/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"Persona",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "EndPoint Personas: Aqui se agregan todas los métodos para realizar el CRUD a la tabla correspondiente."
+		},
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/clientes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/clientes/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByIdPersona",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/clientes/ClienteByIdPersona/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"clientes",
+								"ClienteByIdPersona",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nIdPersona\": 1,\r\n  \"sNombres\": \"Gustavo Fernández\",               // No se mapeará la entidad Persona en el EndPoint de Clientes\r\n  \"nGenero\": 1,                                  // pero al heredar a la clase Persona, los campos obligatorios\r\n  \"nEdad\": 26,                                   // deben enviarse si o si.\r\n  \"cIdentificacion\": \"70886499\",\r\n  \"cDireccion\": \"Piura - Perú\",\r\n  \"cTelefono\": \"51941917926\",\r\n  \"sClave\": \"70886499F\",\r\n  \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/clientes",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nIdPersona\": 1,\r\n  \"sNombres\": \"Gustavo Fernández\",               // No se mapeará la entidad Persona en el EndPoint de Clientes\r\n  \"nGenero\": 1,                                  // pero al heredar a la clase Persona, los campos obligatorios\r\n  \"nEdad\": 26,                                   // deben enviarse si o si.\r\n  \"cIdentificacion\": \"70886499\",\r\n  \"cDireccion\": \"Piura - Perú\",\r\n  \"cTelefono\": \"51941917926\",\r\n  \"nIdCliente\": 1,                                // Actualiza el id enviado en el EndPoint \r\n  \"sClave\": \"70886499F\",\r\n  \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/clientes/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/clientes/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "EndPoint Clientes: Aqui se agregan todas los métodos para realizar el CRUD a la tabla correspondiente."
+		},
+		{
+			"name": "Cuentas",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/cuentas/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nIdCliente\": 1,\r\n  \"sNumCuenta\": \"001108140201413430\",\r\n  \"nTipoCuenta\": 4,      // 4: Ahorros - 5: Corriente\r\n  \"nSaldoInicial\": 10,   // Saldo con el que se apertura la cuenta\r\n  \"nSaldoActual\": 0,\r\n  \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/cuentas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"nIdCuenta\": 1,       // Actualiza el id enviado en el EndPoint \r\n \"nIdCliente\": 2,\r\n \"sNumCuenta\": \"001108140201413430\",\r\n \"nTipoCuenta\": 4,     // 4: Ahorros - 5: Corriente\r\n \"nSaldoInicial\": 0,   // Saldo con el que se apertura la cuenta\r\n \"nSaldoActual\": 0,    // Solo se actualiza con un movimiento\r\n \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/cuentas/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/cuentas/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "EndPoint Cuentas: Aqui se agregan todas los métodos para realizar el CRUD a la tabla correspondiente."
+		},
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "EstadoDeCuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7224/api/reportes/cliente/1?fechaInicio=2023-09-21&fechaFin=2023-09-22",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"reportes",
+								"cliente",
+								"1"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2023-09-21"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2023-09-22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "EndPoint Reportes: Contiene un método para obtener el estado de cuenta, este método recibe un IdCuenta, y un rango de fechas."
+		},
+		{
+			"name": "Movimientos",
+			"item": [
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GetByIdCuenta",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "RealizaTransaccion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nIdCuenta\": 1,\r\n  \"dFechaMovimiento\": \"2023-09-22T03:52:07.550Z\",\r\n  \"nTipoMovimiento\": 6,         // 6: Retiro - 7: Depósito\r\n  \"nValor\": 50,\r\n  \"lVigente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7224/api/movimientos/RealizarTransaccion",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7224",
+							"path": [
+								"api",
+								"movimientos",
+								"RealizarTransaccion"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "EndPoint Movimientos: Aqui podrán visualizarse los movimientos por detalle de movimiento y de cuenta, así como realizar una transacción."
+		}
+	]
+}
