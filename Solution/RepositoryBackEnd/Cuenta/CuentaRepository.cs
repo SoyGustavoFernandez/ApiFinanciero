@@ -126,8 +126,6 @@ namespace RepositoryBackEnd.Cuenta
             CuentaExistente.NIdCliente = Cuenta.NIdCliente;
             CuentaExistente.SNumCuenta = Cuenta.SNumCuenta;
             CuentaExistente.NTipoCuenta = Cuenta.NTipoCuenta;
-            CuentaExistente.NSaldoInicial = Cuenta.NSaldoInicial;
-            CuentaExistente.NSaldoActual = Cuenta.NSaldoActual;
             CuentaExistente.LVigente = Cuenta.LVigente;
 
             await _context.SaveChangesAsync();

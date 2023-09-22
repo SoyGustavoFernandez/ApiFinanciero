@@ -42,9 +42,7 @@ namespace ServicesBackEnd.Reporte
 
             var estadoCuenta = new ReportesViewModel{
                 Cliente = new ClienteViewModel(),
-                Cuentas = new List<CuentaMovimientoViewModel>(),
-                nTotalCredito = 0, 
-                nTotalDebito   = 0
+                Cuentas = new List<CuentaMovimientoViewModel>()
             };
 
             foreach (var cta in ctas.cuentas)
@@ -53,23 +51,6 @@ namespace ServicesBackEnd.Reporte
 
                 movimientos.movimientos = movimientos.movimientos.FindAll(x => Convert.ToDateTime(x.DFechaMovimiento).Date >= dFecInicio.Date && Convert.ToDateTime(x.DFechaMovimiento).Date <= dFecFin.Date);
 
-                decimal debitos = 0;
-                decimal creditos = 0;
-
-                foreach (var mvt in movimientos.movimientos)
-                {
-                    if (mvt.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO)
-                    {
-                        debitos += Math.Abs((decimal)mvt.NValor);
-                    }
-                    else if (mvt.NTipoMovimiento == (int)Tipo_Movimiento.DEPOSITO)
-                    {
-                        creditos += Math.Abs((decimal)mvt.NValor);
-                    }
-                }
-
-                estadoCuenta.nTotalDebito = debitos;
-                estadoCuenta.nTotalCredito = creditos;
                 estadoCuenta.Cliente = new ClienteViewModel
                 {
                     CDireccion = persona.CDireccion,

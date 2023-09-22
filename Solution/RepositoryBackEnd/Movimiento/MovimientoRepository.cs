@@ -23,12 +23,18 @@ namespace RepositoryBackEnd.Movimiento
             try
             {
                 var cuenta = await _context.TblCuenta.FindAsync(Movimiento.NIdCuenta);
-                if (cuenta == null || (cuenta.NSaldoActual < Movimiento.NValor && Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO))
+                if (cuenta == null)
+                {
+                    transaction.Rollback();
+                    return "La cuenta ingresada no existe";
+                }
+
+                if (cuenta.NSaldoActual < Movimiento.NValor && Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO)
                 {
                     transaction.Rollback();
                     return "Saldo no disponible";
                 }
-
+            
                 if (Movimiento.NTipoMovimiento == (int)Tipo_Movimiento.RETIRO)
                 {
                     TblParametro parametro = await ObtenerLimiteDeTransaccionAsync((int)Limite_Diario_Retiro.GRUPO, (int)Limite_Diario_Retiro.PARAMETRO);

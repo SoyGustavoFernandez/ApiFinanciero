@@ -12,7 +12,7 @@ namespace ApiBackend.Controllers
     public class MovimientoController : ControllerBase
     {
         private readonly IMovimientoService _movimientoService;
-        private const string _nombreTabla = "cuenta";
+        private const string _nombreTabla = "movimientos";
 
         public MovimientoController(IMovimientoService movimientoService)
         {
