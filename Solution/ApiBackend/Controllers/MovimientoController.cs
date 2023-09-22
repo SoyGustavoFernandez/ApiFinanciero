@@ -43,7 +43,7 @@ namespace ApiBackend.Controllers
         }
 
         // GET: api/Movimiento/MovimientoByIdCuenta/5
-        [HttpGet("MovimientoByIdCuenta/{idCuenta}")]
+        [HttpGet("Cuentas/{idCuenta}")]
         public async Task<ActionResult<ClienteViewModel>> GetMovimientoByIdCuenta(int idCuenta)
         {
             try

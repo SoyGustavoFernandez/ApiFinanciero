@@ -6,7 +6,7 @@ using ServicesBackEnd.Persona;
 
 namespace ApiBackend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/personas")]
     [ApiController]
     public class PersonaController : ControllerBase
     {

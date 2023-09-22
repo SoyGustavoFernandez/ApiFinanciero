@@ -15,15 +15,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/Persona",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointPersona}}",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"Persona"
+								"{{EndPointPersona}}"
 							]
 						}
 					},
@@ -33,7 +33,20 @@
 					"name": "GetById",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointPersona}}/1",
+							"protocol": "https",
+							"host": [
+								"{{servidor}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"api",
+								"{{EndPointPersona}}",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -52,15 +65,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/Persona",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointPersona}}",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"Persona"
+								"{{EndPointPersona}}"
 							]
 						}
 					},
@@ -81,15 +94,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/Persona/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointPersona}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"Persona",
+								"{{EndPointPersona}}",
 								"1"
 							]
 						}
@@ -102,15 +115,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/Persona/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointPersona}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"Persona",
+								"{{EndPointPersona}}",
 								"1"
 							]
 						}
@@ -129,15 +142,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/clientes",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointClientes}}",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"clientes"
+								"{{EndPointClientes}}"
 							]
 						}
 					},
@@ -149,15 +162,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/clientes/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointClientes}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"clientes",
+								"{{EndPointClientes}}",
 								"1"
 							]
 						}
@@ -170,17 +183,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/clientes/ClienteByIdPersona/2",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointClientes}}/{{EndPointPersona}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"clientes",
-								"ClienteByIdPersona",
-								"2"
+								"{{EndPointClientes}}",
+								"{{EndPointPersona}}",
+								"1"
 							]
 						}
 					},
@@ -193,7 +206,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nIdPersona\": 1,\r\n  \"sNombres\": \"Gustavo Fernández\",               // No se mapeará la entidad Persona en el EndPoint de Clientes\r\n  \"nGenero\": 1,                                  // pero al heredar a la clase Persona, los campos obligatorios\r\n  \"nEdad\": 26,                                   // deben enviarse si o si.\r\n  \"cIdentificacion\": \"70886499\",\r\n  \"cDireccion\": \"Piura - Perú\",\r\n  \"cTelefono\": \"51941917926\",\r\n  \"sClave\": \"70886499F\",\r\n  \"lVigente\": true\r\n}",
+							"raw": "{\r\n  \"nIdPersona\": 1,\r\n  \"sNombres\": \"Gustavo Fernández\",      // No se mapeará la entidad Persona en el EndPoint de Clientes\r\n  \"nGenero\": 1,                         // pero al heredar a la clase Persona, los campos obligatorios\r\n  \"nEdad\": 26,                          // deben enviarse si o si.\r\n  \"cIdentificacion\": \"70886499\",\r\n  \"cDireccion\": \"Piura - Perú\",\r\n  \"cTelefono\": \"51941917926\",\r\n  \"sClave\": \"70886499F\",\r\n  \"lVigente\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -201,15 +214,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/clientes",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointClientes}}",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"clientes"
+								"{{EndPointClientes}}"
 							]
 						}
 					},
@@ -230,15 +243,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/clientes/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointClientes}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"clientes",
+								"{{EndPointClientes}}",
 								"1"
 							]
 						}
@@ -251,15 +264,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/clientes/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointClientes}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"clientes",
+								"{{EndPointClientes}}",
 								"1"
 							]
 						}
@@ -276,7 +289,19 @@
 					"name": "GetAll",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointCuentas}}",
+							"protocol": "https",
+							"host": [
+								"{{servidor}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"api",
+								"{{EndPointCuentas}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -286,15 +311,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/cuentas/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointCuentas}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"cuentas",
+								"{{EndPointCuentas}}",
 								"1"
 							]
 						}
@@ -316,15 +341,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/cuentas",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointCuentas}}",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"cuentas"
+								"{{EndPointCuentas}}"
 							]
 						}
 					},
@@ -345,15 +370,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/cuentas/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointCuentas}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"cuentas",
+								"{{EndPointCuentas}}",
 								"1"
 							]
 						}
@@ -366,15 +391,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/cuentas/1",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointCuentas}}/1",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"cuentas",
+								"{{EndPointCuentas}}",
 								"1"
 							]
 						}
@@ -393,22 +418,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:7224/api/reportes/cliente/1?fechaInicio=2023-09-21&fechaFin=2023-09-22",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointReportes}}/{{EndPointClientes}}/2?fechaInicio=2023-09-22&fechaFin=2023-09-22",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"reportes",
-								"cliente",
-								"1"
+								"{{EndPointReportes}}",
+								"{{EndPointClientes}}",
+								"2"
 							],
 							"query": [
 								{
 									"key": "fechaInicio",
-									"value": "2023-09-21"
+									"value": "2023-09-22"
 								},
 								{
 									"key": "fechaFin",
@@ -429,7 +454,20 @@
 					"name": "GetById",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointMovimientos}}/1",
+							"protocol": "https",
+							"host": [
+								"{{servidor}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"api",
+								"{{EndPointMovimientos}}",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -437,7 +475,21 @@
 					"name": "GetByIdCuenta",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointMovimientos}}/{{EndPointCuentas}}/1",
+							"protocol": "https",
+							"host": [
+								"{{servidor}}"
+							],
+							"port": "{{puerto}}",
+							"path": [
+								"api",
+								"{{EndPointMovimientos}}",
+								"{{EndPointCuentas}}",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -448,7 +500,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nIdCuenta\": 1,\r\n  \"dFechaMovimiento\": \"2023-09-22T03:52:07.550Z\",\r\n  \"nTipoMovimiento\": 6,         // 6: Retiro - 7: Depósito\r\n  \"nValor\": 50,\r\n  \"lVigente\": true\r\n}",
+							"raw": "{\r\n  \"nIdCuenta\": 10,\r\n  \"dFechaMovimiento\": \"2023-09-22T03:52:07.550Z\",\r\n  \"nTipoMovimiento\": 7,         // 6: Retiro - 7: Depósito\r\n  \"nValor\": 50,\r\n  \"lVigente\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -456,15 +508,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:7224/api/movimientos/RealizarTransaccion",
+							"raw": "https://{{servidor}}:{{puerto}}/api/{{EndPointMovimientos}}/RealizarTransaccion",
 							"protocol": "https",
 							"host": [
-								"localhost"
+								"{{servidor}}"
 							],
-							"port": "7224",
+							"port": "{{puerto}}",
 							"path": [
 								"api",
-								"movimientos",
+								"{{EndPointMovimientos}}",
 								"RealizarTransaccion"
 							]
 						}
@@ -473,6 +525,60 @@
 				}
 			],
 			"description": "EndPoint Movimientos: Aqui podrán visualizarse los movimientos por detalle de movimiento y de cuenta, así como realizar una transacción."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "puerto",
+			"value": "7224"
+		},
+		{
+			"key": "servidor",
+			"value": "localhost"
+		},
+		{
+			"key": "EndPointPersona",
+			"value": "Personas"
+		},
+		{
+			"key": "EndPointClientes",
+			"value": "Clientes",
+			"type": "string"
+		},
+		{
+			"key": "EndPointCuentas",
+			"value": "Cuentas",
+			"type": "string"
+		},
+		{
+			"key": "EndPointMovimientos",
+			"value": "Movimientos",
+			"type": "string"
+		},
+		{
+			"key": "EndPointReportes",
+			"value": "Reportes",
+			"type": "string"
 		}
 	]
 }

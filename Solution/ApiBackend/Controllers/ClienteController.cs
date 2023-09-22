@@ -59,7 +59,7 @@ namespace ApiBackend.Controllers
         }
 
         // GET: api/Cliente/ClienteByIdPersona/5
-        [HttpGet("ClienteByIdPersona/{idPersona}")]
+        [HttpGet("Personas/{idPersona}")]
         public async Task<ActionResult<PersonaClienteViewModel>> GetClienteByIdPersona(int idPersona)
         {
             try

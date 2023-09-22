@@ -16,7 +16,7 @@ namespace ApiBackend.Controllers
             _reporteService = reporteService;
         }
 
-        [HttpGet("cliente/{idCliente}")]
+        [HttpGet("clientes/{idCliente}")]
         public async Task<ActionResult<ReportesViewModel>> ObtenerEstadoDeCuenta(int idCliente, [FromQuery] DateTime fechaInicio, [FromQuery] DateTime fechaFin)
         {
             try
