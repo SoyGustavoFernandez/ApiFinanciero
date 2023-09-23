@@ -4,7 +4,6 @@ using Moq;
 using RepositoryBackEnd.Movimiento;
 using ServicesBackEnd;
 using ServicesBackEnd.Movimiento;
-using ServicesBackEnd.Persona;
 using System.ComponentModel.DataAnnotations;
 
 namespace UnitTestBackEnd
@@ -42,7 +41,7 @@ namespace UnitTestBackEnd
                 await _movimientoService.RealizarTransaccionAsync(movimientoViewModel);
             });
 
-            Assert.AreEqual("La cuenta es obligatoria", ex.InnerException);
+            Assert.That(ex.Message, Is.EqualTo("La cuenta es obligatoria"));
         }
     }
 }
